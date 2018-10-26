@@ -244,7 +244,7 @@ if(message.author.bot) return;
 
 
 
-client.on('message'', message => {
+client.on('message', message => {
 
 if (message.content === '!say') {
 const embed = new RichEmbed()

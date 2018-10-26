@@ -618,14 +618,7 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 
 });
 
-client.on('message'), message => {
-if (message.content === '!say') {
-const embed = new RichEmbed()
-.setTitle('OMEGA')
-.setColor(RANDOM)
-.setdescription('CODE');
-message.channel.send(embed);
-}
+
 
 
 });

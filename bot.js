@@ -517,7 +517,7 @@ client.on('message', message => {
 
 if (message.author.bot) return;
 
-var prefix = "-";
+var prefix = "!";
 
 if (!message.content.startsWith(prefix)) return;
 
@@ -541,7 +541,7 @@ let muteRole = message.guild.roles.find("name", "Muted");
 
 if (!muteRole) return message.reply(":no_entry: Error | لا يمكنني ايجاد 'Muted' رتبة").then(msg => {msg.delete(5000)});
 
-if (message.mentions.users.size < 1) return message.reply('**➥ Useage:** -mute \`\`@Name\`\` reason');
+if (message.mentions.users.size < 1) return message.reply('**➥ استخدم:** !mute \`\`@Name\`\` reason');
 
 let reason = message.content.split(" ").slice(2).join(" ");
 
@@ -594,7 +594,7 @@ let muteRole = message.guild.roles.find("name", "Muted");
 
 if (!muteRole) return message.reply(":no_entry: Error | I Cant find 'Muted' Role").then(msg => {msg.delete(5000)});
 
-if (message.mentions.users.size < 1) return message.reply('**➥ Useage:** -unmute \`\`@Name\`\`');
+if (message.mentions.users.size < 1) return message.reply('**➥ استخدم:** !unmute \`\`@Name\`\`');
 
 let reason = message.content.split(" ").slice(2).join(" ");
 

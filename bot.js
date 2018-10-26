@@ -155,6 +155,7 @@ moment.locale('ar-TN');
 .addField("**اسمك**", `${message.author.username}`)
 .addField('**تاقك**', message.author.discriminator)
 .addField('**ايديك**', message.author.id)
+.addField(' الـسيرفر', `${member.guild.name}`,true)
 .setFooter("『معلوماتك』")  
     message.channel.sendEmbed(id);
 })

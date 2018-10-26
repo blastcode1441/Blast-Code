@@ -626,7 +626,7 @@ const embed = new RichEmbed()
 .setdescription('CODE');
 message.channel.send(embed);
 }
-});
+
 
 });
 client.login(process.env.BOT_TOKEN);

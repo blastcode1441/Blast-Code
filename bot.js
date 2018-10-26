@@ -205,7 +205,6 @@ if(message.content.startsWith(prefix + 'ch')) {
     });
 
 
- Raw text
 const credits = JSON.parse(fs.readFileSync("./creditsCode.json", "utf8"));
 const coolDown = new Set();
 

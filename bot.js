@@ -244,6 +244,19 @@ if(message.author.bot) return;
 
 
 
+client.on('message'', message => {
+
+if (message.content === '!say') {
+const embed = new RichEmbed()
+.setTitle('A Slick little embed')
+.setColor(RANDOM)
+.setDescription('OMEGA CODE')
+message.channel.send(embed) ;
+}
+}):
+
+
+
 
 
 const bannedwords = [

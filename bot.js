@@ -618,7 +618,16 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 
 });
 
-
+client.on('message', message => {
+const client = new Client();
+  if (message.content === '!say') {
+    const embed = new RichEmbed()
+      .setTitle('TG_Pro')
+      .setColor(RANDOM)
+      .setDescription('TG_Pro');
+    message.channel.send(embed);
+  }
+});
 
 
 });

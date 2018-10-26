@@ -513,6 +513,111 @@ msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?c
 });          
           
 
+client.on('message', message => { 
 
+if (message.author.bot) return;
+
+var prefix = "-";
+
+if (!message.content.startsWith(prefix)) return;
+
+let command = message.content.split(" ")[0];
+
+command = command.slice(prefix.length);
+
+let args = message.content.split(" ").slice(1);
+
+if (command == "mute") {
+
+if(!message.channel.guild) return message.reply(':no_entry: | This Command For Servers Only!'); 
+
+        if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | You dont have **MANAGE_ROLES** Permission!');
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | I dont have **MANAGE_ROLES** Permission!');
+
+let user = message.mentions.users.first();
+
+let muteRole = message.guild.roles.find("name", "Muted");
+
+if (!muteRole) return message.reply(":no_entry: Error | لا يمكنني ايجاد 'Muted' رتبة").then(msg => {msg.delete(5000)});
+
+if (message.mentions.users.size < 1) return message.reply('**➥ Useage:** -mute \`\`@Name\`\` reason');
+
+let reason = message.content.split(" ").slice(2).join(" ");
+
+message.guild.member(user).addRole(muteRole);
+
+const muteembed = new Discord.RichEmbed()
+
+.setColor("RANDOM")
+
+.setAuthor(`Muted!`, user.displayAvatarURL)
+
+.setThumbnail(user.displayAvatarURL)
+
+.addField("**:busts_in_silhouette: المستخدم**", '**[ ' + `${user.tag}` + ' ]**',true)
+
+.addField("**:hammer: تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+
+.addField("**:book: السبب**", '**[ ' + `${reason}` + ' ]**',true)
+
+.addField("User", user, true) 
+
+  .setTitle('**[MUTED]**')
+
+		.setThumbnail(message.author.avatarURL)
+
+		.setColor('GREEN')
+
+		.setDescription(`**\n:zipper_mouth: Successfully \`\`MUTED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${message.author.id}> (ID: ${message.author.id})\n**Reason:** \`\`${reason}\`\``)
+
+		.setTimestamp()
+
+		.setFooter(user.tag, user.avatarURL)
+
+client.channels.find('name', "log").send({embed : muteembed});
+
+}
+
+
+if (command == "unmute") {
+
+if(!message.channel.guild) return message.reply(':no_entry: | This Command For Servers Only!'); 
+
+        if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | You dont have **MANAGE_ROLES** Permission!');
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | I dont have **MANAGE_ROLES** Permission!');
+
+let user = message.mentions.users.first();
+
+let muteRole = message.guild.roles.find("name", "Muted");
+
+if (!muteRole) return message.reply(":no_entry: Error | I Cant find 'Muted' Role").then(msg => {msg.delete(5000)});
+
+if (message.mentions.users.size < 1) return message.reply('**➥ Useage:** -unmute \`\`@Name\`\`');
+
+let reason = message.content.split(" ").slice(2).join(" ");
+
+message.guild.member(user).removeRole(muteRole);
+
+const unmuteembed = new Discord.RichEmbed()
+
+.setTitle('**[UNMUTED]**')
+
+			.setThumbnail(message.author.avatarURL)
+
+			.setColor('GREEN')
+
+			.setDescription(`**\n:zipper_mouth: Successfully \`\`UNMUTED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${message.author.id}> (ID: ${message.author.id})`)
+
+			.setTimestamp()
+
+			.setFooter(user.tag, user.avatarURL)
+
+client.channels.find('name', "log").send({embed : unmuteembed});
+
+}
+
+});
 
 client.login(process.env.BOT_TOKEN);

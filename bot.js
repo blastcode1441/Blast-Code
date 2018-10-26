@@ -503,12 +503,7 @@ var prefix = "!"
 
 
 
-client.on("ready", () => { // حقوق سيرفر اوميجا كودز
-  function lol() {
-    client.guilds.get('484725335741431818').roles.find("name", "• OmEGa » Server Bots").setColor("RANDOM");
-  };
-  setInterval(lol, 10000);
-});
+
 
 
 client.login(process.env.BOT_TOKEN);

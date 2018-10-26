@@ -243,7 +243,7 @@ if(message.author.bot) return;
 
 
 lient.on("message", message => {
-     if (message.content === "&kick") {
+     if (message.content === "!kick") {
          if(!message.channel.guild) return message.reply('** This command only for servers **');
         message.reply("bla bla")
      }
@@ -253,7 +253,7 @@ lient.on("message", message => {
 
 
 client.on("message", message => {
-     if (message.content === "&ban") {
+     if (message.content === "!ban") {
          if(!message.channel.guild) return message.reply('** This command only for servers **');
         message.reply("bla bla")
      }

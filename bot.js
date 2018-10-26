@@ -618,7 +618,6 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 
 });
 
-});
 
 });
 client.login(process.env.BOT_TOKEN);

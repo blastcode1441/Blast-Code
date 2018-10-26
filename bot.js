@@ -483,9 +483,142 @@ ${thisMessage}\`\`\`
       })}});
 
 
+client.on('message', message => {
+var prefix = "!"
+   if(message.content.startsWith(prefix + "invites")) {
+    message.guild.fetchInvites().then(invs => {
+      let user = message.mentions.users.first() || message.author
+      let personalInvites = invs.filter(i => i.inviter.id === user.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+               let mmmmEmbed = new Discord.RichEmbed()
+                         .setAuthor(client.user.username)
+                         .setThumbnail(message.author.avatarURL)
+ .addField(` لقد قمت بدعوة :`, ` ${inviteCount} `)
+           .setFooter(`- Requested By: ${message.author.tag}`);
+           message.channel.send(mmmmEmbed)
+});
+  }
+});
+
+
+client.on('message', msg => {
+    if(msg.content.startsWith('!link')) {
+    if(msg.channel.type === 'dm') return;
+const user = msg.mentions.users.first();
+if(!user) return msg.channel.send('``' + '**قم بتحديد بوت**' + '``')
+if(!user.bot) return msg.reply('\`منشن بوت\`');
+msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?client_id=${user.id}&scope=bot&permissions=384064`)
+    }
+});          
+          
+client.on('message', message => { 
+
+if (message.author.bot) return;
+
+var prefix = "!";
+
+if (!message.content.startsWith(prefix)) return;
+
+let command = message.content.split(" ")[0];
+
+command = command.slice(prefix.length);
+
+let args = message.content.split(" ").slice(1);
+
+if (command == "mute") {
+
+if(!message.channel.guild) return message.reply(':no_entry: | This Command For Servers Only!'); 
+
+        if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | You dont have **MANAGE_ROLES** Permission!');
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | I dont have **MANAGE_ROLES** Permission!');
+
+let user = message.mentions.users.first();
+
+let muteRole = message.guild.roles.find("name", "Muted");
+
+if (!muteRole) return message.reply(":no_entry: Error | لا يمكنني ايجاد 'Muted' رتبة").then(msg => {msg.delete(5000)});
+
+if (message.mentions.users.size < 1) return message.reply('**➥ استخدم:** !mute \`\`@Name\`\` reason');
+
+let reason = message.content.split(" ").slice(2).join(" ");
+
+message.guild.member(user).addRole(muteRole);
+
+const muteembed = new Discord.RichEmbed()
+
+.setColor("RANDOM")
+
+.setAuthor(`Muted!`, user.displayAvatarURL)
+
+.setThumbnail(user.displayAvatarURL)
+
+.addField("**:busts_in_silhouette: المستخدم**", '**[ ' + `${user.tag}` + ' ]**',true)
+
+.addField("**:hammer: تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+
+.addField("**:book: السبب**", '**[ ' + `${reason}` + ' ]**',true)
+
+.addField("User", user, true) 
+
+  .setTitle('**[MUTED]**')
+
+		.setThumbnail(message.author.avatarURL)
+
+		.setColor('GREEN')
+
+		.setDescription(`**\n:zipper_mouth: Successfully \`\`MUTED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${message.author.id}> (ID: ${message.author.id})\n**Reason:** \`\`${reason}\`\``)
+
+		.setTimestamp()
+
+		.setFooter(user.tag, user.avatarURL)
+
+client.channels.find('name', "log").send({embed : muteembed});
+
+}
+
+
+if (command == "unmute") {
+
+if(!message.channel.guild) return message.reply(':no_entry: | This Command For Servers Only!'); 
+
+        if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | You dont have **MANAGE_ROLES** Permission!');
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES')) return message.channel.send(':no_entry: | I dont have **MANAGE_ROLES** Permission!');
+
+let user = message.mentions.users.first();
+
+let muteRole = message.guild.roles.find("name", "Muted");
+
+if (!muteRole) return message.reply(":no_entry: Error | I Cant find 'Muted' Role").then(msg => {msg.delete(5000)});
+
+if (message.mentions.users.size < 1) return message.reply('**➥ استخدم:** !unmute \`\`@Name\`\`');
+
+let reason = message.content.split(" ").slice(2).join(" ");
+
+message.guild.member(user).removeRole(muteRole);
+
+const unmuteembed = new Discord.RichEmbed()
+
+.setTitle('**[UNMUTED]**')
+
+			.setThumbnail(message.author.avatarURL)
+
+			.setColor('GREEN')
+
+			.setDescription(`**\n:zipper_mouth: Successfully \`\`UNMUTED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${message.author.id}> (ID: ${message.author.id})`)
+
+			.setTimestamp()
+
+			.setFooter(user.tag, user.avatarURL)
+
+client.channels.find('name', "log").send({embed : unmuteembed});
+
+}
+
+});
 
 
 
-
-
+});
 client.login(process.env.BOT_TOKEN);

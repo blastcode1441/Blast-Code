@@ -239,7 +239,6 @@ if(message.author.bot) return;
   .addField('**سرعة استجابة البوت:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
   message.channel.sendEmbed(embed);
     }
-});
 
 
 

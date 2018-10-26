@@ -242,5 +242,25 @@ if(message.author.bot) return;
 });
 
 
+lient.on("message", message => {
+     if (message.content === "&kick") {
+         if(!message.channel.guild) return message.reply('** This command only for servers **');
+        message.reply("bla bla")
+     }
+});
+
+
+
+
+client.on("message", message => {
+     if (message.content === "&ban") {
+         if(!message.channel.guild) return message.reply('** This command only for servers **');
+        message.reply("bla bla")
+     }
+});
+
+
+
+
 
 client.login(process.env.BOT_TOKEN);

@@ -207,7 +207,7 @@ if(message.content.startsWith(prefix + 'ch')) {
 const code = 'prefix';//prefix
  
 client.on('message',async message => {
-var prefix = "$"
+var prefix = "!"
     if(message.content.startsWith(code + "js")) {
   if(!message.channel.guild) return message.reply('This Command For Servers Only !');
     let jscodes = message.guild.channels.find(`name`, "✵-「discord-js");

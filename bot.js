@@ -731,7 +731,6 @@ client.on('guildMemberAdd', member => {
     const inviter = client.users.get(invite.inviter.id);
     const member = member.guild.channels.find("name", "✵-「public-chat");
      member.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
-    member.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
   }); 
 });
 

@@ -203,3 +203,4 @@ if(message.content.startsWith(prefix + 'ch')) {
   }
  
     });
+client.login(process.env.BOT_TOKEN);

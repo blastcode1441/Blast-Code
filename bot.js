@@ -331,7 +331,7 @@ var prefix = "!"
         let support = message.guild.roles.find("name","Support Team");
         let ticketsStation = message.guild.channels.find("name", "TICKETS");
         if(!args) {
-            return message.channel.send('Please type a subject for the ticket.');
+            return message.channel.send('الرجأء ضع سبب التذكرة.');
         };
                 if(!support) {
                     return message.channel.send('**Please make sure that `Support Team` role exists and it\'s not duplicated.**');
@@ -341,7 +341,7 @@ var prefix = "!"
             };
                 message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
                     message.delete()
-                        message.channel.send(`Your ticket has been created. [ ${ticket} ]`);
+                        message.channel.send(`لقد تم انشاء تذكرتك. [ ${ticket} ]`);
                     ticket.setParent(ticketsStation);
                     ticketsStation.setPosition(1);
                         ticket.overwritePermissions(message.guild.id, {
@@ -357,12 +357,12 @@ var prefix = "!"
                                     READ_MESSAGES: true
                                 });
                     let embed = new Discord.RichEmbed()
-                                .setTitle('**New Ticket.**')
+                                .setTitle('**تذكرة جديدة.**')
                                 .setColor("RANDOM")
                                 .setThumbnail(`${message.author.avatarURL}`)
-                                .addField('Subject', args)
-                                .addField('Author', message.author)
-                                .addField('Channel', `<#${message.channel.id}>`);
+                                .addField('السبب', args)
+                                .addField('صاحب التذكرة', message.author)
+                                .addField('الروم', `<#${message.channel.id}>`);
  
                                 ticket.sendEmbed(embed);
                 }) .catch();
@@ -373,13 +373,13 @@ var prefix = "!"
             return;
         };  
                 let embed = new Discord.RichEmbed()
-                    .setAuthor("Do you really want to close this ticket? Repeat the command to make sure. You have 20 seconds.")
+                    .setAuthor("هل انت متأكد انك تريد اغلان التذكرة ؟ لديك 20 ثانية لكي تقرر.")
                     .setColor("RANDOM");
                     message.channel.sendEmbed(embed) .then(codes => {
  
                    
-                        const filter = msg => msg.content.startsWith(prefix + 'close');
-                        message.channel.awaitMessages(response => response.content === prefix + 'close', {
+                        const filter = msg => msg.content.startsWith(prefix + 'yes');
+                        message.channel.awaitMessages(response => response.content === prefix + 'yes', {
                             max: 1,
                             time: 20000,
                             errors: ['time']
@@ -404,15 +404,6 @@ var prefix = "!"
 });
 
 
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const stewart = member.guild.channels.find("name", "✵-「public-chat");
-     stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
-   //  stewart.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
-  }); 
-});
+
 
 client.login(process.env.BOT_TOKEN);

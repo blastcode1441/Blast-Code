@@ -463,7 +463,7 @@ client.on('message',async message => {
             collected.first().delete();
             jscodes.send(`@everyone | @here
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-**${message.guild.name}©   :arrow_down:**            
+**${message.guild.name}© :arrow_down:**            
 \`\`\`js
 ${thisMessage}\`\`\`
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

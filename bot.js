@@ -655,8 +655,8 @@ client.on('message', async message => {
                                         message.channel.send(embedS).then(msgS => {
                                             msgS.react('⛔').then(() => msgS.react('✅'))
                                            
-                                            let yesSure = (reaction, user) => reaction.emoji.name === ':white_check_mark:'  && user.id === message.author.id;
-                                            let no = (reaction, user) => reaction.emoji.name === ':no_entry:' && user.id === message.author.id;
+                                            let yesSure = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
+                                            let no = (reaction, user) => reaction.emoji.name === '⛔' && user.id === message.author.id;
                                            
                                             let yesSend = msgS.createReactionCollector(yesSure);
                                             let dontSend = msgS.createReactionCollector(no);

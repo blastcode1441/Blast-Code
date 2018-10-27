@@ -629,4 +629,20 @@ client.on('message', msg => {
   }
 });
 
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(" هلا !!");
+    }
+});
+
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(" ايش تبي");
+    }
+});
+
 client.login(process.env.BOT_TOKEN);

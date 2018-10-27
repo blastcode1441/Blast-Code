@@ -537,4 +537,12 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 });
 
 
+ const prefix = "!"
+client.on("message", message => {
+
+  if (message.content.startsWith(prefix + "avatar")) {
+    message.channel.send(message.author.avatarURL);
+  };
+ })
+
 client.login(process.env.BOT_TOKEN);

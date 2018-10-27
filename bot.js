@@ -653,7 +653,7 @@ client.on('message', async message => {
                                        
                                         msgS.delete();
                                         message.channel.send(embedS).then(msgS => {
-                                            msgS.react(':no_entry:').then(() => msgS.react(':white_check_mark:'))
+                                            msgS.react('⛔').then(() => msgS.react('✅'))
                                            
                                             let yesSure = (reaction, user) => reaction.emoji.name === ':white_check_mark:'  && user.id === message.author.id;
                                             let no = (reaction, user) => reaction.emoji.name === ':no_entry:' && user.id === message.author.id;

@@ -463,13 +463,13 @@ client.on('message',async message => {
             collected.first().delete();
             jscodes.send(`@everyone | @here
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-**${message.guild.name}© :arrow_down:**            
+**${message.guild.name}©   :arrow_down:**            
 \`\`\`js
 ${thisMessage}\`\`\`
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 **وصف الكود**: ${boi}
-**تم النشر بواسطة**: ${message.author}
-**المصدر / الشخص الذي صنع الكود**: ${boi2}`);
+**تم النشر بواسطة** : ${message.author}
+**المصدر  / الشخص الذي صنع الكود**:  ${boi2}`);
           }
         }
     );

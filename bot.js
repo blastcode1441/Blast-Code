@@ -7,7 +7,7 @@ client.on('ready', () => {
 
 // كود اعطا العضو رتبة اول ما يدخل السيرفر
 client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","![The one]!"));
+    member.addRole(member.guild.roles.find("name","• OmEGa » Member"));
     });
 
 

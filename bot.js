@@ -536,22 +536,4 @@ client.channels.find('name', "log").send({embed : unmuteembed});
     }
 });
 
-
- const prefix = "!"
-client.on("message", message => {
-
-  if (message.content.startsWith(prefix + "avatar")) {
-    message.channel.send(message.author.avatarURL);
-  };
- })
-
-client.on('typingStart', (ch, user) => {
-    if(user.presence.status === 'offline') {
-        ch.send(`${user} تحذير هذا شخص مسوي نفسه اوف لاين ويكتب`)
-        .then(msg => {
-            msg.delete(10000)
-        })
-    }
-});
-
 client.login(process.env.BOT_TOKEN);

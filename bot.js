@@ -531,7 +531,7 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 .addField(' الاعضاء👥 ',` [${client.users.size}] `)
 .addField('الرومات📚 ',`[${client.channels.size}]`) 
 .addField(' البنق🚀 ',`[${Date.now() - message.createdTimestamp}]`) 
-.addField('مصمم  + صاحب البوت ',`! 1 raaxe&mrof`)
+.addField('مصمم  + صاحب البوت ',`! 1 raaxe`)
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }

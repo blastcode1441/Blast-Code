@@ -672,7 +672,7 @@ client.on('message', async message => {
                                                 .addField('الاسم', name)
                                                 .addField('العمر', age)
                                                 .addField('من وين', fromwhere)
-                                                .addField('لماذا يريد التقديم', fa2dh)
+                                                .addField('معك خبرة بالاكواد ؟', fa2dh)
                                                 .addField('حسابه', message.author)
                                                 .addField('ايدي حسابه', message.author.id, true)
                                                

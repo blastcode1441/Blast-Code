@@ -523,7 +523,7 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 });
 
  client.on('message', message => {
-	       var prefix = ">";
+	       var prefix = "!";
             if (message.content.startsWith(prefix + "bot")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)

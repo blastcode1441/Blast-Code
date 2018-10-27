@@ -165,6 +165,7 @@ moment.locale('ar-TN');
 client.on('message', function(msg) {
 	var prefix = "!"
     if(msg.content.startsWith (prefix  + 'server')) {
+      message.react("🤖") 
       let embed = new Discord.RichEmbed()
       .setColor('#00ff47')
       .setThumbnail(msg.guild.iconURL)

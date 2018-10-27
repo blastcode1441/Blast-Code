@@ -677,7 +677,7 @@ client.on('message', async message => {
                                                 .addField('ايدي حسابه', message.author.id, true)
                                                
                                                 subChannel.send(subMsg).then(msgS => {
-                                                    msgS.react('?').then(() => msgS.react('?'))
+                                                    msgS.react('⛔').then(() => msgS.react('✅'))
                                                    
                                                     let accept = (reaction, user) => reaction.emoji.name === ':white_check_mark:'  && user.id === '467782642549653514'
                                                     let noAccept = (reaction, user) => reaction.emoji.name === ':no_entry:' && user.id === '484683624495448064'

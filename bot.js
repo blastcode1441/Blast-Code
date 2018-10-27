@@ -522,9 +522,8 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 
 });
 
-
  client.on('message', message => {
-	       var prefix = "!";
+	       var prefix = ">";
             if (message.content.startsWith(prefix + "bot")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
@@ -532,7 +531,7 @@ client.channels.find('name', "log").send({embed : unmuteembed});
 .addField(' الاعضاء👥 ',` [${client.users.size}] `)
 .addField('الرومات📚 ',`[${client.channels.size}]`) 
 .addField(' البنق🚀 ',`[${Date.now() - message.createdTimestamp}]`) 
-.addField('مصمم  + صاحب البوت ',`!,Raaxe ,🍻#8352
+.addField('مصمم  + صاحب البوت ',`! 1 raaxe&mrof`)
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
